@@ -2,9 +2,11 @@ import React from 'react';
 
 type DayProps = {
   date: Date;
+  onDayClick: (date: Date) => void;
 };
 
-const Day: React.FC<DayProps> = ({ date }) => {
+
+const Day: React.FC<DayProps> = ({ date, onDayClick }) => {
 
   const isToday = (date: Date): boolean => {
     const today = new Date();
@@ -13,18 +15,15 @@ const Day: React.FC<DayProps> = ({ date }) => {
            date.getFullYear() === today.getFullYear();
   };
 
-  // Clases de estilo base para todos los días
-  let dayClass = 'w-[42px] h-[42px] flex flex-col items-center justify-center p-2.5 text-center text-lg text-white';
+  let dayClass = 'w-[42px] h-[42px] flex flex-col items-center justify-center p-2.5 text-center text-lg text-white cursor-pointer hover:bg-[#f0f4f8] rounded-full transition-colors duration-300 eas';
 
-  // Agrega una clase de estilo adicional si es el día actual
   if (isToday(date)) {
-    dayClass += 'text-white text-base rounded-full bg-gradient-to-r from-[#f00] to-[#ff0] w-8 h-8'; // Ejemplo: fondo azul para el día actual
+    dayClass += 'text-white text-base rounded-full [background:linear-gradient(90deg,_#ff465d,_#bc46ba)] w-8 h-8 '; // Ejemplo: fondo azul para el día actual
   }
 
   return (
-    <div className={dayClass}>
+    <div className={dayClass} onClick={() => onDayClick(date)}>
       {date.getDate()}
-      {/* Aquí podrías agregar componentes o elementos para eventos, recordatorios, etc. */}
     </div>
   );
 };

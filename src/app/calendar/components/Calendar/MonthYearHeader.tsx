@@ -19,8 +19,8 @@ const MonthYearHeader: React.FC<MonthYearHeaderProps> = ({ currentMonth }) => {
   };
 
   return (
-    <div className= {`${open_sans.className}antialiased text-center text-61xl font-semibold text-white font-extrabold mt-5`}>
-      <div >
+    <div className= {`${open_sans.className}antialiased text-center  text-white  mt-4`}>
+      <div className='text-61xl font-extrabold' >
         {yearFormat(currentMonth)} 
       </div>
       <div className="text-26xl font-semibold -mt-9">
