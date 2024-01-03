@@ -22,7 +22,16 @@ const reminderFormSlice = createSlice({
   reducers: {
     updateField(state, action: PayloadAction<{ field: string; value: string }>) {
       const { field, value } = action.payload;
-      state[field] = value;
+      interface ReminderFormData {
+        title: string;
+        date: string;
+        color: string;
+        time: string;
+        description: string;
+        [key: string]: string; // Add index signature
+      }
+
+      // Rest of the code...
     },
     resetForm: () => initialState,
   },
