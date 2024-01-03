@@ -6,6 +6,7 @@ import { setShowReminderForm } from '../../../../redux/features/reminderSlice';
 import CurrentDateDisplay from './CurrentDateDisplay';
 import ReminderForm from './ReminderForm';
 import ReminderList from './ReminderList';
+import Banner from './Banner';
 
 const RemindersView: React.FC = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const RemindersView: React.FC = () => {
   return (
     <div className='p-10 w-3/5'>
       <CurrentDateDisplay onAddReminderClick={handleAddReminderClick} />
+      {!showForm && <Banner />} 
       {showForm && <ReminderForm />}
       <ReminderList />
     </div>

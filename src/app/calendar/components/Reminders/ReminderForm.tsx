@@ -6,6 +6,7 @@ import {
   updateField,
   resetForm,
 } from "../../../../redux/features/reminderFormSlice";
+import ColorBox from "./ColorBox";
 
 const ReminderForm: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -25,67 +26,62 @@ const ReminderForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label className="text-black absolute top-[167px] left-[199px]">
-          Title
-        </label>
-        <input
-          className="absolute top-[193px] left-[199px] rounded-md bg-white box-border w-[602px] h-12 border-[1px] border-solid border-gray-300 text-black p-4"
-          type="text"
-          name="title"
-          placeholder="Title"
-          value={formData.title}
-          onChange={handleChange}
-        />
-      </div>
+    <div className="w-50 h-3/4  absolute top-40">
+      <form onSubmit={handleSubmit}>
+        <div className="flex flex-col pb-8">
+          <label className="text-black">Title</label>
+          <input
+            className=" rounded-md bg-white box-border w-[602px] h-12 border-[1px] border-solid border-gray-300 text-black p-4"
+            type="text"
+            name="title"
+            placeholder="Title"
+            value={formData.title}
+            onChange={handleChange}
+          />
+        </div>
 
-      <div>
-        <label className="text-black absolute top-[271px] left-[199px]">
-          Description
-        </label>
-        <input
-          className="absolute top-[297px] left-[199px] rounded-md bg-white box-border w-[602px] h-[76px] border-[1px] border-solid border-gray-300"
-          type="text"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-        />
-      </div>
+        <div className="flex flex-col pb-8">
+          <label className="text-black ">Description</label>
+          <input
+            className="rounded-md bg-white box-border w-[602px] h-[76px] border-[1px] border-solid border-gray-300"
+            type="text"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex flex-row items-center justify-between m-auto pb-8">
+          <div className="flex flex-col">
+            <label className="text-black ">Date</label>
+            <input
+              className=" rounded-md bg-white box-border w-[281px] h-12 border-[1px] border-solid border-gray-300"
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="text-black ">Time</label>
+            <input
+              className="rounded-md bg-white box-border w-[281px] h-12 border-[1px] border-solid border-gray-300"
+              type="time"
+              name="time"
+              value={formData.time}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
 
-      <div>
-        <label className="text-black absolute top-[403px] left-[200px]">Date</label>
-        <input
-          className="absolute top-[429px] left-[200px] rounded-md bg-white box-border w-[281px] h-12 border-[1px] border-solid border-gray-300"
-          type="date"
-          name="date"
-          value={formData.date}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label className="text-black absolute top-[403px] left-[521px]">Time</label>
-        <input
-        className="absolute top-[429px] left-[521px] rounded-md bg-white box-border w-[281px] h-12 border-[1px] border-solid border-gray-300"
-          type="time"
-          name="time"
-          value={formData.time}
-          onChange={handleChange}
-        />
-      </div>
+        <div className="flex flex-col pb-8">
+        <label className="text-black ">Color</label>
+        <ColorBox color="#ff0000" onClick={() => console.log('Color box clicked!')} />
 
-      <div>
-        <label className="text-black">Color</label>
-        <input
-          type="color"
-          name="color"
-          value={formData.color}
-          onChange={handleChange}
-        />
-      </div>
+        </div>
 
-      <button type="submit">Submit</button>
-    </form>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 

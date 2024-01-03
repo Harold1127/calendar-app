@@ -21,7 +21,7 @@ type CurrentDateDisplayProps = {
 
 
   return (
-    <div className="absolute top-[54px] w-3/5 flex items-center">
+    <div className="absolute top-[50px] w-3/5 flex items-center">
       <h1 className="text-5xl font-semibold text-gray-700">
       {displayString}
       </h1>

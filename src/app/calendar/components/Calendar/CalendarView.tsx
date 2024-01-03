@@ -49,7 +49,7 @@ const CalendarView: React.FC = () => {
           goToNextMonth={goToNextMonth}
         />
       </div>
-      <div className="p-10">
+      <div className="px-10 py-0 mt-10 absolute top-[230px]">
         <div className="grid grid-cols-7 gap-2.5 p-0 mb-2.5">
           {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map((dayName) => (
             <div
