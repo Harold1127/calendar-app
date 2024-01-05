@@ -2,10 +2,12 @@
 import Image from "next/image";
 import CalendarView from "./calendar/CalendarView";
 import Copy from "./calendar/Copy";
-import { open_sans } from '../styles/fonts';
+import { open_sans } from "../styles/fonts";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className= {`${open_sans.className}antialiased relative bg-aliceblue w-[1119px] h-[976px] overflow-hidden text-left text-xs text-white flex justify-center items-center`}>
+    <div
+      className={`${open_sans.className}antialiased relative bg-aliceblue w-[1119px] h-[976px] overflow-hidden text-left text-xs text-white flex justify-center items-center`}
+    >
       <div className="absolute top-20 w-full h-full ">
         <Image
           src="/codelitt.svg"

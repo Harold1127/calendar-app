@@ -10,10 +10,8 @@ const ReminderList: React.FC = () => {
     (state: RootState) => state.calendar.selectedDate
   );
 
-  // Formatear la fecha seleccionada para comparar solo año, mes y día
   const selectedDateFormatted = selectedDateISO.split("T")[0];
 
-  // Filtrar recordatorios por la fecha seleccionada
   const filteredReminders = reminders.filter((reminder) => {
     const reminderDateFormatted = reminder.date.split("T")[0];
     return reminderDateFormatted === selectedDateFormatted;
@@ -24,11 +22,11 @@ const ReminderList: React.FC = () => {
       className="overflow-y-auto w-[600px] reminder-list p-3 pl-5"
       style={{ height: "522px", scrollbarWidth: "none" }}
     >
-      {/* Mostrar recordatorios filtrados o un banner si no hay ninguno */}
       {filteredReminders.length > 0 ? (
         filteredReminders.map((reminder, index) => (
           <div key={index} className="mb-3">
             <ReminderItem
+              id={reminder.id}
               title={reminder.title}
               date={reminder.date}
               time={reminder.time}

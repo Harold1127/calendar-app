@@ -1,15 +1,13 @@
 "use client";
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store'; // Asegúrate de que la ruta sea correcta
+import { RootState } from '../../../redux/store'; 
 import EditReminder from "./EditReminder";
 import CurrentDateDisplay from "../common/CurrentDateDisplay";
 import AddReminderButton from "../common/AddReminderButton";
 
 export default function Reminder() {
   const reminderToEdit = useSelector((state: RootState) => {
-    // Obtén el recordatorio que deseas editar del estado de Redux
-    // Por ejemplo, si tienes un ID de recordatorio seleccionado, úsalo aquí para obtener ese recordatorio
     return state.reminders.find(r => r.id === selectedReminderId);
   });
 

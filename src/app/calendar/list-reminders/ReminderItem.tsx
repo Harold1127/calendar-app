@@ -1,16 +1,15 @@
 import React from "react";
 import Image from "next/image";
-import { useRouter } from 'next/navigation';
-// Definición de las props que el componente espera recibir
+import { useRouter } from "next/navigation";
+
 type ReminderItemProps = {
-  id: string; 
+  id: string;
   title: string;
   date: string;
   time: string;
   color: string;
   description: string;
   [key: string]: string;
-
 };
 
 const ReminderItem: React.FC<ReminderItemProps> = ({
@@ -24,7 +23,6 @@ const ReminderItem: React.FC<ReminderItemProps> = ({
   const router = useRouter();
 
   const handleEditClick = () => {
-    // Redirige a la página de edición con el ID del recordatorio
     router.push(`/calendar/edit-reminder?id=${id}`);
   };
   return (

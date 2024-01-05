@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState, AppDispatch } from '../../../redux/store';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState, AppDispatch } from "../../../redux/store";
 import {
   updateField,
   resetForm,
-  setFormData
-} from '../../../redux/features/reminderFormSlice';
-import { addReminder } from '../../../redux/features/remindersSlice';
-import ColorBox from '../common/ColorBox';
-import BackButton from '../common/BackButton';
-import { useRouter } from 'next/navigation';
+  setFormData,
+} from "../../../redux/features/reminderFormSlice";
+import { addReminder } from "../../../redux/features/remindersSlice";
+import ColorBox from "../common/ColorBox";
+import BackButton from "../common/BackButton";
+import { useRouter } from "next/navigation";
 
 interface Reminder {
   title: string;
@@ -30,7 +30,6 @@ const EditReminder: React.FC<EditReminderProps> = ({ reminder }) => {
   const formData = useSelector((state: RootState) => state.reminderForm);
 
   useEffect(() => {
-    // Precargar los datos del recordatorio en el formulario
     dispatch(setFormData(reminder));
   }, [reminder, dispatch]);
 
@@ -42,23 +41,29 @@ const EditReminder: React.FC<EditReminderProps> = ({ reminder }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Aquí deberías agregar la lógica para actualizar el recordatorio
-    console.log('Datos actualizados:', formData);
-    // Por ejemplo, podrías despachar una acción para actualizar el recordatorio en el store
-    // dispatch(updateReminder({ id: reminder.id, data: formData }));
-    router.push('/calendar/list-reminders');
+
+    console.log("Datos actualizados:", formData);
+    router.push("/calendar/list-reminders");
     dispatch(resetForm());
   };
 
   const colors = [
-    '#C8E6C9', '#F5DD29', '#FFCC80', '#EF9A9A', '#CD8DE5',
-    '#5BA4CF', '#29CCE5', '#6DECA9', '#FF8ED4', '#BCAAA4',
+    "#C8E6C9",
+    "#F5DD29",
+    "#FFCC80",
+    "#EF9A9A",
+    "#CD8DE5",
+    "#5BA4CF",
+    "#29CCE5",
+    "#6DECA9",
+    "#FF8ED4",
+    "#BCAAA4",
   ];
 
   return (
-    <div className='w-[602px] h-3/4 absolute top-28'>
+    <div className="w-[602px] h-3/4 absolute top-28">
       <form onSubmit={handleSubmit}>
-      <div className="flex flex-col pb-8">
+        <div className="flex flex-col pb-8">
           <label className="text-darkslategray-100 font-normal text-lg">
             Title
           </label>
@@ -131,23 +136,30 @@ const EditReminder: React.FC<EditReminderProps> = ({ reminder }) => {
             />
           </div>
         </div>
-        <div className='flex flex-col pb-8'>
-          <label className='text-darkslategray-100 font-normal text-lg'>Color</label>
-          <div className='flex space-x-2'>
+        <div className="flex flex-col pb-8">
+          <label className="text-darkslategray-100 font-normal text-lg">
+            Color
+          </label>
+          <div className="flex space-x-2">
             {colors.map((color, index) => (
               <ColorBox
                 key={index}
                 color={color}
                 selected={formData.color === color}
-                onClick={() => dispatch(updateField({ field: 'color', value: color }))}
+                onClick={() =>
+                  dispatch(updateField({ field: "color", value: color }))
+                }
               />
             ))}
           </div>
         </div>
-        <div className='absolute top-[485px] left-[293px]'>
+        <div className="absolute top-[485px] left-[293px]">
           <BackButton />
         </div>
-        <button type='submit' className='absolute top-[485px] left-[494px] text-base font-semibold text-center rounded bg-slateblue shadow-[0px_4px_28px_2px_#d1dcf0] w-[108px] h-[49px] cursor-pointer'>
+        <button
+          type="submit"
+          className="absolute top-[485px] left-[494px] text-base font-semibold text-center rounded bg-slateblue shadow-[0px_4px_28px_2px_#d1dcf0] w-[108px] h-[49px] cursor-pointer"
+        >
           Save
         </button>
       </form>
