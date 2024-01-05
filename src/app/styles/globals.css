@@ -1,6 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 
 
 input[type='number'] {
@@ -18,8 +19,50 @@ input[type='number']::-webkit-outer-spin-button {
   margin: 0;
 }
 
+input[type='text']::-webkit-input-placeholder {
+  color: #38404280;
+  font-weight: 400;
+  font-size: 18px;
+}
 
-body {
+input[type='date']::-webkit-input-placeholder {
+  color: #38404280;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+input[type='time']::-webkit-input-placeholder {
+  color: #38404280;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+/* Estilos para la barra de desplazamiento */
+.reminder-list::-webkit-scrollbar {
+  width: 6px;
+  max-height: 139px;;
+   /* Ancho de la barra de desplazamiento */
+}
+
+.reminder-list::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color de fondo de la pista */
+ 
+}
+
+.reminder-list::-webkit-scrollbar-thumb {
+  background: #421F91;
+  border-radius: 11px;
+  height: 139px;
+
+}
+
+.reminder-list::-webkit-scrollbar-thumb:hover {
+  background: #5d32c1; /* Color de fondo del control deslizante al pasar el mouse */
+}
+
+
+
+ body {
   background-color: #EBF3FE;
 }
 

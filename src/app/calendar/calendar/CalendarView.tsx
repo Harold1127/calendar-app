@@ -1,16 +1,26 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../../../redux/store"; 
-import { setCurrentMonth, setSelectedDate } from "../../../../redux/features/calendarSlice"; 
-import Day from "./Day"; 
-import MonthNavigation from "./MonthNavigation";  
-import MonthYearHeader from "./MonthYearHeader"; 
+import { RootState } from "../../../redux/store";
+import {
+  setCurrentMonth,
+  setSelectedDate,
+} from "../../../redux/features/calendarSlice";
+import Day from "./Day";
+import MonthNavigation from "./MonthNavigation";
+import MonthYearHeader from "./MonthYearHeader";
+import { lato } from "../../styles/fonts";
 
 const CalendarView: React.FC = () => {
   const dispatch = useDispatch();
 
-  const currentMonthString = useSelector((state: RootState) => state.calendar.currentMonth);
+  const currentMonthString = useSelector(
+    (state: RootState) => state.calendar.currentMonth
+  );
   const currentMonth = new Date(currentMonthString);
+  const selectedDateString = useSelector(
+    (state: RootState) => state.calendar.selectedDate
+  );
+  const selectedDate = new Date(selectedDateString);
 
   const daysInMonth = (year: number, month: number): Date[] => {
     const date = new Date(year, month, 1);
@@ -23,15 +33,27 @@ const CalendarView: React.FC = () => {
   };
 
   const days = daysInMonth(currentMonth.getFullYear(), currentMonth.getMonth());
-  const startDay = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1).getDay();
+  const startDay = new Date(
+    currentMonth.getFullYear(),
+    currentMonth.getMonth(),
+    1
+  ).getDay();
 
   const goToPreviousMonth = () => {
-    const prevMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
+    const prevMonth = new Date(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth() - 1,
+      1
+    );
     dispatch(setCurrentMonth(prevMonth.toISOString()));
   };
 
   const goToNextMonth = () => {
-    const nextMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1);
+    const nextMonth = new Date(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth() + 1,
+      1
+    );
     dispatch(setCurrentMonth(nextMonth.toISOString()));
   };
 
@@ -40,7 +62,7 @@ const CalendarView: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col rounded-2xl">
+    <div className={`${lato.className}antialiased flex flex-col rounded-2xl`}>
       <div className="flex flex-col items-center p-4">
         <MonthYearHeader currentMonth={currentMonth} />
         <MonthNavigation
@@ -65,9 +87,17 @@ const CalendarView: React.FC = () => {
           {Array.from({ length: startDay }).map((_, index) => (
             <div key={`placeholder-${index}`} className="p-2.5 "></div>
           ))}
-          {days.map((date, index) => (
-           <Day key={index} date={date} onDayClick={onDayClick} />
-          ))}
+          {days.map((date, index) => {
+            const isSelected = date.toISOString() === selectedDateString;
+            return (
+              <Day
+                key={index}
+                date={date}
+                onDayClick={onDayClick}
+                isSelected={isSelected}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

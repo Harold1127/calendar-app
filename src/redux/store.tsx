@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import calendarReducer from './features/calendarSlice';
-import reminderReducer from './features/reminderSlice';
+import remindersReducer from './features/remindersSlice';
 import reminderFormReducer from './features/reminderFormSlice';
 
 export const store = configureStore({
   reducer: {
     calendar: calendarReducer,
-    reminder: reminderReducer,
+    reminders: remindersReducer,
     reminderForm: reminderFormReducer,
 
   },

@@ -1,14 +1,15 @@
-// store/features/calendarSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CalendarState {
   currentMonth: string;
   selectedDate: string;
+  isDateSelected: boolean;
 }
 
 const initialState: CalendarState = {
   currentMonth: new Date().toISOString(),
-  selectedDate: new Date().toISOString(),
+  selectedDate: '',
+  isDateSelected: false,
 };
 
 const calendarSlice = createSlice({
@@ -20,7 +21,9 @@ const calendarSlice = createSlice({
     },
     setSelectedDate(state, action: PayloadAction<string>) {
       state.selectedDate = action.payload;
+      state.isDateSelected = true;
     },
+    
   },
 });
 

@@ -1,5 +1,5 @@
 // components/Calendar/MonthYearHeader.tsx
-import { open_sans } from '../../../styles/fonts';
+import { open_sans } from '../../styles/fonts';
 import React from 'react';
 
 type MonthYearHeaderProps = {
