@@ -9,7 +9,7 @@ interface ColorBoxProps {
   selected: boolean; 
 }
 
-const ColorBox: React.FC<ColorBoxProps> = ({ color }) => {
+const ColorBox: React.FC<ColorBoxProps> = ({ color, onClick, selected  }) => {
   const dispatch = useDispatch();
   const selectedColor = useSelector((state: RootState) => state.reminderForm.color);
 

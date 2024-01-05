@@ -14,7 +14,8 @@ const initialState: ReminderFormData = {
   date: '',
   color: '',
   time: '',
-  description: ''
+  description: '',
+  key: '',
 };
 
 const reminderFormSlice = createSlice({

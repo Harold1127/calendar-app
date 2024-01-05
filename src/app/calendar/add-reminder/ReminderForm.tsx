@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../../redux/store";
 import {
@@ -15,6 +15,7 @@ const ReminderForm: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const router = useRouter();
   const formData = useSelector((state: RootState) => state.reminderForm);
+  const [selectedColor, setSelectedColor] = useState<string>("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -40,6 +41,10 @@ const ReminderForm: React.FC = () => {
     console.log("Datos guardados:", formData);
     router.push("/calendar/list-reminders");
     dispatch(resetForm());
+  };
+
+  const handleColorClick = (color: string) => {
+    setSelectedColor(color);
   };
   const colors = [
     "#C8E6C9",
@@ -137,7 +142,12 @@ const ReminderForm: React.FC = () => {
           </label>
           <div className="flex space-x-2">
             {colors.map((color, index) => (
-              <ColorBox key={index} color={color} />
+              <ColorBox
+                key={index}
+                color={color}
+                selected={color === selectedColor}
+                onClick={() => handleColorClick(color)}
+              />
             ))}
           </div>
         </div>
